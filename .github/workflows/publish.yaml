@@ -11,13 +11,13 @@ jobs:
     - uses: actions/setup-node@v1
       with:
         node-version: 12
-    - name: Install dependencies
-      run: yarn install
+    - name: Install
+      run: npm install
     - name: Build
-      run: yarn build
-    - name: Auth to npm
+      run: npm run build
+    - name: Auth
       run: npm config set //registry.npmjs.org/:_authToken=$NPM_AUTH_TOKEN
       env:
         NPM_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
     - name: Publish
-      run: yarn publish --tag next${GITHUB_SHA} --no-git-tag-version
+      run: npm publish --tag next${GITHUB_SHA} --no-git-tag-version
