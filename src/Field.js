@@ -18,4 +18,6 @@ class Field extends HTMLElement {
 	}
 }
 
-window.customElements.define("my-field", Field); 
+window.customElements.define("my-field", Field);
+
+export default Field;

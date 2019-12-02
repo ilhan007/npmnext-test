@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "build": "copy-and-watch src/**/*.js dist",
-    "watch": "copy-and-watch --watch src/**/*.js dist"
+    "watch": "copy-and-watch --watch src/**/*.js dist",
+    "prepublishOnly": "npm run build"
   },
   "author": "",
   "license": "ISC",
