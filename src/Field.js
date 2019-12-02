@@ -3,6 +3,7 @@
 * @since 1.0.0
 * @class
 * @public
+* @tagname my-field
 */
 class Field extends HTMLElement {
 	constructor() {
