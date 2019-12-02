@@ -17,6 +17,6 @@ jobs:
     - name: Build
       run: yarn build
     - name: Publish
-      run: yarn publish --new-version ${GITHUB_REF#"refs/tags/"} --no-git-tag-version
+      run: yarn publish --tag @next${GITHUB_SHA} --no-git-tag-version
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
