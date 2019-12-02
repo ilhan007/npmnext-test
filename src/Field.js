@@ -1,5 +1,5 @@
 /*
-* Field webcomponent
+* Field webcomponent @since 1.0.0
 */
 class Field extends HTMLElement {
 	constructor() {
