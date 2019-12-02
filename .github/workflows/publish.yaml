@@ -3,9 +3,7 @@ name: Publish
 on: [push, pull_request]
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v1
     - uses: actions/setup-node@v1
@@ -21,4 +19,3 @@ jobs:
         NPM_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
     - name: Publish
       run: npm publish --tag @next${GITHUB_SHA} --no-git-tag-version
-     
