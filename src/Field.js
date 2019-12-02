@@ -1,3 +1,6 @@
+/*
+* Field webcomponent
+*/
 class Field extends HTMLElement {
 	constructor() {
 		super();
@@ -11,7 +14,7 @@ class Field extends HTMLElement {
 
 		shadow.appendChild(style);
 		root.appendChild(input)
-		shadow.appendChild(inprootut);
+		shadow.appendChild(root);
 	}
 }
 

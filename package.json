@@ -4,8 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "copy-and-watch src/**/*.js dist",
+    "watch": "copy-and-watch --watch src/**/*.js dist"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "copy-and-watch": "^0.1.4"
+  }
 }
