@@ -12,9 +12,9 @@ jobs:
       with:
         node-version: 12
     - name: Install
-      run: npm install
+      run: yarn
     - name: Build
-      run: npm run build
+      run: yarn build
     - name: Auth
       run: npm config set //registry.npmjs.org/:_authToken=$NPM_AUTH_TOKEN
       env:
