@@ -1,6 +1,8 @@
 name: Publish
 
-on: push
+push:
+    branches:
+      - master
 jobs:
   build:
 
@@ -11,6 +13,7 @@ jobs:
     - uses: actions/setup-node@v1
       with:
         node-version: 12
+
     - name: Install
       run: yarn
 
@@ -23,7 +26,7 @@ jobs:
         NPM_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
     - name: Make prerelease to npm
-      run: ./test.js
+      uses: ./.github/actions/pre-release
 
     # - name: Make prerelease to npm
     #   uses: epeli/npm-release@v1
