@@ -2,7 +2,6 @@
   "name": "@next-sample/root",
   "description": "",
   "version": "1.0.0-rc.5",
-  "private": true,
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ilhan007/npmnext-sample.git"
