@@ -1,4 +1,5 @@
 {
+  "name": "@next-sample/root",
   "description": "",
   "version": "1.0.0-rc.5",
   "private": true,

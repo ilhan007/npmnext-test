@@ -30,12 +30,3 @@ jobs:
       with:
         type: prerelease
         token: ${{ secrets.NPM_TOKEN }}
-
-    # - name: Fiori package
-    #   run: cd ../fiori
-
-    # - name: Make prerelease to npm
-    #   uses: epeli/npm-release@v1
-    #   with:
-    #     type: prerelease
-    #     token: ${{ secrets.NPM_TOKEN }}
