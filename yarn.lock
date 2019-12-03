@@ -2,6 +2,11 @@
 # yarn lockfile v1
 
 
+"@actions/exec@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.npmjs.org/@actions/exec/-/exec-1.0.1.tgz#1624b541165697e7008d7c87bc1f69f191263c6c"
+  integrity sha512-nvFkxwiicvpzNiCBF4wFBDfnBvi7xp/as7LE1hBxBxKG2L29+gkIPBiLKMVORL+Hg3JNf07AKRfl0V5djoypjQ==
+
 "@types/events@*":
   version "3.0.0"
   resolved "https://registry.npmjs.org/@types/events/-/events-3.0.0.tgz#2862f3f58a9a7f7c3e78d79f130dd4d71c25c2a7"

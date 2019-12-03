@@ -6,6 +6,7 @@ const semver = require("semver");
 const child_process = require("child_process");
 const glob = require("glob-promise");
 const gitRev = child_process.execSync("git rev-parse HEAD").toString();
+const { exec } = require("@actions/exec");
 
 const run = async () => {
 	const files = await glob("**/packages/**/package.json", {
@@ -22,7 +23,9 @@ const run = async () => {
 		)}`;
 		
 		console.log("Prerelease version: " + pkg.version);
-		return writeFileAsync(file, JSON.stringify(pkg, null, ""));
+		await writeFileAsync(file, JSON.stringify(pkg, null, ""));
+
+		return exec(`npm publish --tag next`);
 	});
 
 	await Promise.all(promises);
