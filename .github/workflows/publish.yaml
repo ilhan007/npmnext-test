@@ -19,14 +19,16 @@ jobs:
       run: npm config set //registry.npmjs.org/:_authToken=$NPM_AUTH_TOKEN
       env:
         NPM_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-    - name: Make prerelease to npm
+    - name: Main package
       run: cd packages/main
+    - name: Make prerelease to npm
       uses: epeli/npm-release@v1
       with:
         type: prerelease
         token: ${{ secrets.NPM_TOKEN }}
+    - name: Main package
+      run: cd ../fiori
     - name: Make prerelease to npm
-      run:  cd ../fiori
       uses: epeli/npm-release@v1
       with:
         type: prerelease
