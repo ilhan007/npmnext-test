@@ -15,15 +15,12 @@ jobs:
       run: yarn
 
     - name: Build
-      run: cd packages/main && yarn build
+      run: yarn build
 
     - name: Auth
       run: npm config set //registry.npmjs.org/:_authToken=$NPM_AUTH_TOKEN
       env:
         NPM_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-
-    # - name: Main package
-    #   run: cd packages/main
 
     - name: Make prerelease to npm
       uses: epeli/npm-release@v1
