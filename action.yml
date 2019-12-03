@@ -1,0 +1,5 @@
+name: 'publish-release'
+author: 'ilhan Orhan'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
