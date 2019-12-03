@@ -6,7 +6,7 @@
 * @tagname my-field
 * @package @next-sample/fiori
 */
-class Field extends HTMLElement {
+class MyField extends HTMLElement {
 	constructor() {
 		super();
 
@@ -23,6 +23,6 @@ class Field extends HTMLElement {
 	}
 }
 
-window.customElements.define("my-field", Field);
+window.customElements.define("my-field", MyField);
 
-export default Field;
+export default MyField;
