@@ -1,24 +1,26 @@
 {
-  "name": "@next-sample/root",
-  "description": "",
-  "version": "1.0.0-rc.5",
-  "private": true,
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ilhan007/npmnext-sample.git"
-  },
-  "scripts": {
-    "build": "npm-run-all --sequential build:main build:fiori",
-    "build:main": "cd packages/main && yarn build",
-    "build:fiori": "cd packages/fiori && yarn build"
-  },
-  "devDependencies": {
-    "npm-run-all": "^4.1.3"
-  },
-  "author": "",
-  "license": "ISC",
-  "workspaces": [
-    "packages/main",
-    "packages/fiori"
-  ]
+    "name": "@next-sample/root",
+    "description": "",
+    "version": "1.0.0-dev.3db1dd721",
+    "private": true,
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/ilhan007/npmnext-sample.git"
+    },
+    "scripts": {
+        "build": "npm-run-all --sequential build:main build:fiori",
+        "build:main": "cd packages/main && yarn build",
+        "build:fiori": "cd packages/fiori && yarn build"
+    },
+    "devDependencies": {
+        "glob-promise": "^3.4.0",
+        "npm-run-all": "^4.1.3",
+        "semver": "^6.3.0"
+    },
+    "author": "",
+    "license": "ISC",
+    "workspaces": [
+        "packages/main",
+        "packages/fiori"
+    ]
 }
