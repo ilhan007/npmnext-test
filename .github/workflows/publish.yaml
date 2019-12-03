@@ -20,4 +20,4 @@ jobs:
       env:
         NPM_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
     - name: Publish
-      uses: publish-release
+      uses: npmnext-sample/publish-release@master
