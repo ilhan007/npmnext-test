@@ -14,19 +14,19 @@ const run = async () => {
 	});
 
 	const promises = files.map(async (file) => {
-		consolole.log(file)
-		const fileContent = await readFileAsync(file)
-		const pkg = JSON.parse(fileContent.toString());
+		const package = file.split("package.json")[0];
+		const packageJSONFile = await readFileAsync(file);
+		const pkgJSON = JSON.parse(packageJSONFile.toString());
 	
-		pkg.version = `${semver.inc(pkg.version, "patch")}-dev.${gitRev.slice(
+		pkgJSON.version = `${semver.inc(pkgJSON.version, "patch")}-dev.${gitRev.slice(
 			0,
 			9,
 		)}`;
 		
-		console.log("Prerelease version: " + pkg.version);
-		await writeFileAsync(file, JSON.stringify(pkg, null, ""));
+		console.log("Prerelease version: " + pkgJSON.version);
+		await writeFileAsync(file, JSON.stringify(pkgJSON, null, ""));
 
-		return exec(`npm publish --tag next`);
+		return exec(`npm publish ${package} --tag=next`);
 	});
 
 	await Promise.all(promises);
