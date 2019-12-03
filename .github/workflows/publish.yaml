@@ -22,8 +22,8 @@ jobs:
       env:
         NPM_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-    - name: Main package
-      run: cd packages/main
+    # - name: Main package
+    #   run: cd packages/main
 
     - name: Make prerelease to npm
       uses: epeli/npm-release@v1

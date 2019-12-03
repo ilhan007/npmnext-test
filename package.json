@@ -1,5 +1,6 @@
 {
   "description": "",
+  "version": "1.0.0-rc.5",
   "private": true,
   "repository": {
     "type": "git",
