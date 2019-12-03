@@ -1,5 +1,5 @@
 /**
-* Field webcomponent, wrapping a native input!
+* Field webcomponent, wrapping a native input?
 * @since 1.0.0
 * @class
 * @public
