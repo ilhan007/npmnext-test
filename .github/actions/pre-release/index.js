@@ -18,13 +18,10 @@ const run = async () => {
 		const packageJSONFile = await readFileAsync(file);
 		const pkgJSON = JSON.parse(packageJSONFile.toString());
 	
-		pkgJSON.version = `${semver.inc(pkgJSON.version, "patch")}-dev.${gitRev.slice(
-			0,
-			9,
-		)}`;
+		pkgJSON.version = `${pkgJSON.version}.${gitRev.slice(0,9,)}`;
 		
 		console.log("Prerelease version: " + pkgJSON.version);
-		await writeFileAsync(file, JSON.stringify(pkgJSON, null, ""));
+		await writeFileAsync(file, JSON.stringify(pkgJSON, null, "  "));
 
 		return exec(`npm publish ${package} --tag=next`);
 	});
