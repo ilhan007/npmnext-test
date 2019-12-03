@@ -23,7 +23,7 @@ jobs:
         NPM_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
     - name: Make prerelease to npm
-      run: ./test.js
+      script: ./test.js
 
     # - name: Make prerelease to npm
     #   uses: epeli/npm-release@v1
