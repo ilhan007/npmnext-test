@@ -1,8 +1,8 @@
-const fs = require('fs')
-const { promisify } = require('util');
+const fs = require("fs");
+const { promisify } = require("util");
 const readFileAsync = promisify(fs.readFile);
 const writeFileAsync = promisify(fs.writeFile);
-const semver = require('semver');
+const semver = require("semver");
 const child_process = require("child_process");
 const glob = require("glob-promise");
 const gitRev = child_process.execSync("git rev-parse HEAD").toString();
@@ -22,7 +22,7 @@ const run = async () => {
 		)}`;
 		
 		console.log("Prerelease version: " + pkg.version);
-		return writeFileAsync(file, JSON.stringify(pkg, null, "    "));
+		return writeFileAsync(file, JSON.stringify(pkg, null, ""));
 	});
 
 	await Promise.all(promises);
