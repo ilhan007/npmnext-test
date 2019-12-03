@@ -16,7 +16,11 @@ const run = async () => {
 		const packageJSONFile = await readFileAsync(file);
 		const pkgJSON = JSON.parse(packageJSONFile.toString());
 
-		pkgJSON.version = `${pkgJSON.version}.${gitRev.slice(0,7,)}`;
+		if (pkgJSON.version.includes("rc")) {
+			pkgJSON.version = `${pkgJSON.version}.${gitRev.slice(0,7,)}`;
+		} else {
+			pkgJSON.version = `${pkgJSON.version}-rc.${gitRev.slice(0,7,)}`;
+		}
 
 		console.log("Prerelease version: " + pkgJSON.version);
 		await writeFileAsync(file, JSON.stringify(pkgJSON, null, "  "));
