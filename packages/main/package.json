@@ -1,0 +1,20 @@
+{
+    "name": "@npmnext-sample/main",
+    "version": "1.0.0",
+    "private": false,
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/ilhan007/npmnext-sample.git"
+    },
+    "scripts": {
+      "build": "copy-and-watch src/**/*.js dist",
+      "watch": "copy-and-watch --watch src/**/*.js dist",
+      "prepublishOnly": "npm run build"
+    },
+    "devDependencies": {
+        "copy-and-watch": "^0.1.4"
+    },
+    "author": "",
+    "license": "ISC"
+  }
+  
