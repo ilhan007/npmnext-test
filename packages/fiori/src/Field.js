@@ -4,6 +4,7 @@
 * @class
 * @public
 * @tagname my-field
+* @package @next-sample/fiori
 */
 class Field extends HTMLElement {
 	constructor() {
