@@ -11,8 +11,11 @@
       "watch": "copy-and-watch --watch src/**/*.js dist",
       "prepublishOnly": "npm run build"
     },
+    "dependencies": {
+      "@next-level/base": "0.18.0"
+    },
     "devDependencies": {
-        "copy-and-watch": "^0.1.4"
+      "copy-and-watch": "^0.1.4"
     },
     "author": "",
     "license": "ISC"
