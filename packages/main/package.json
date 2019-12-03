@@ -1,6 +1,6 @@
 {
-    "name": "@npmnext-sample/main",
-    "version": "1.0.0",
+    "name": "@next-sample/main",
+    "version": "1.0.0-rc.5",
     "private": false,
     "repository": {
       "type": "git",
@@ -16,5 +16,4 @@
     },
     "author": "",
     "license": "ISC"
-  }
-  
+}
