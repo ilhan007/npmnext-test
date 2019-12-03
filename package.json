@@ -1,14 +1,13 @@
 {
-    "name": "@next-sample/root",
     "description": "",
-    "version": "1.0.0-dev.3db1dd721",
     "private": true,
     "repository": {
         "type": "git",
         "url": "git+https://github.com/ilhan007/npmnext-sample.git"
     },
     "scripts": {
-        "build": "npm-run-all --sequential build:main build:fiori",
+        "build": "npm-run-all --sequential build:main build:fiori build:base",
+        "build:base": "cd packages/base && yarn build",
         "build:main": "cd packages/main && yarn build",
         "build:fiori": "cd packages/fiori && yarn build"
     },
