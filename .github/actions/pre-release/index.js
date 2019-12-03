@@ -9,24 +9,25 @@ const gitRev = child_process.execSync("git rev-parse HEAD").toString();
 const { exec } = require("@actions/exec");
 
 const run = async () => {
-	const files = await glob("**/packages/**/package.json", {
-		"ignore": "**/node_modules/**/*.*"
-	});
+	const files = await glob("**/packages/**/package.json", { "ignore": "**/node_modules/**/*.*" });
 
-	const promises = files.map(async (file) => {
+	const publishPromises = files.map(async (file) => {
 		const package = file.split("package.json")[0];
 		const packageJSONFile = await readFileAsync(file);
 		const pkgJSON = JSON.parse(packageJSONFile.toString());
 	
-		pkgJSON.version = `${pkgJSON.version}.${gitRev.slice(0,9,)}`;
-		
+		pkgJSON.version = `${semver.inc(pkgJSON.version, "patch")}-rc.${gitRev.slice(
+			0,
+			9,
+		)}`;
+
 		console.log("Prerelease version: " + pkgJSON.version);
 		await writeFileAsync(file, JSON.stringify(pkgJSON, null, "  "));
 
 		return exec(`npm publish ${package} --tag=next`);
 	});
 
-	await Promise.all(promises);
+	await Promise.all(publishPromises);
 }
 
 run().catch(error => {
