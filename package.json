@@ -3,9 +3,6 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "bin": {
-    "publish-release": "./publish-release.js"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ilhan007/npmnext-sample.git"
