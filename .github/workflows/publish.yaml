@@ -19,5 +19,8 @@ jobs:
       run: npm config set //registry.npmjs.org/:_authToken=$NPM_AUTH_TOKEN
       env:
         NPM_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-    - name: Publish
-      uses: ilhan007/npmnext-test@master
+    - name: Make prerelease to npm
+      uses: epeli/npm-release@v1
+      with:
+        type: prerelease
+        token: ${{ secrets.NPM_TOKEN }}
