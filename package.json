@@ -3,6 +3,13 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "bin": {
+    "publush-release": "./publush-release.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ilhan007/npmnext-sample.git"
+  },
   "scripts": {
     "build": "copy-and-watch src/**/*.js dist",
     "watch": "copy-and-watch --watch src/**/*.js dist",
