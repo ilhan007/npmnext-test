@@ -19,7 +19,7 @@ const storePackageInfo = async filePath => {
 	return PACKAGES[name];
 };
 
-const generateVersion = pkg => {
+const genNextVersion = pkg => {
 	console.info(pkg.fileContent);
 	const currentVersion = pkg.fileContent.version;
 	const suffix = currentVersion.toString().includes("rc") ? "" : "-dev";
@@ -56,11 +56,11 @@ const run = async () => {
 	const FILES = await glob("**/packages/**/package.json", { "ignore": "**/node_modules/**/*.*" });
 
 	// Step 1: store packages info
-	const pkgs = await Promise.all(FILES.map(storePackageInfo));
+	let pkgs = await Promise.all(FILES.map(storePackageInfo));
 	console.log("Promise res:", pkgs);
 
 	// Step 2: generate new npm versions
-	const pkgs = pkgs.map(generateVersion);
+	pkgs = pkgs.map(genNextVersion);
 
 	// Step 3: update package.json nad  publish to npm
 	await Promise.all(pkgs.map(async pkg => {
