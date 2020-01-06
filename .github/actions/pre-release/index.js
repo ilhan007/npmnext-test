@@ -1,4 +1,5 @@
 const fs = require("fs");
+const path = require("path");
 const { promisify } = require("util");
 const readFileAsync = promisify(fs.readFile);
 const writeFileAsync = promisify(fs.writeFile);
@@ -24,6 +25,7 @@ const run = async () => {
 };
 
 const processPackageJSON = async file => {
+	const folder = file.split("package.json")[0];
 	const fileRead = await readFileAsync(file);
 	const fileContent = JSON.parse(fileRead.toString());
 	const name = fileContent.name;
@@ -31,7 +33,7 @@ const processPackageJSON = async file => {
 	const suffix = currentVersion.toString().includes("rc") ? "" : "-dev";
 	const version = `${currentVersion}${suffix}.${gitRev.slice(0,7,)}`;
 
-	PACKAGES[name] = { name, file, fileContent, version };
+	PACKAGES[name] = { name, file, fileContent, version, folder };
 	return PACKAGES[name];
 };
 
@@ -54,7 +56,7 @@ const getDependencies = (dependencies) => {
 
 const publishPackage = async pkg => {
 	console.info(`Publish ${pkg.name}: ${pkg.version} ...`);
-	return exec(`yarn publish --tag=next`);
+	return exec(`yarn publish ${path.join(__dirname, pkg.folder)} --tag=next`);
 };
 
 run().catch(error => {
