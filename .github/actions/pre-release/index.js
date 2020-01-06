@@ -56,6 +56,7 @@ const getDependencies = (dependencies) => {
 
 const publishPackage = async pkg => {
 	console.info(`Publish ${pkg.name}: ${pkg.version} ...`);
+	console.log(path.join(__dirname, pkg.folder));
 	return exec(`yarn publish ${path.join(__dirname, pkg.folder)} --tag=next`);
 };
 
