@@ -23,9 +23,9 @@ const run = async () => {
 	}));
 };
 
-const processPackageJSON = async filePath => {
-	const file = await readFileAsync(filePath);
-	const fileContent = JSON.parse(file.toString());
+const processPackageJSON = async file => {
+	const fileRead = await readFileAsync(file);
+	const fileContent = JSON.parse(fileRead.toString());
 	const name = fileContent.name;
 	const currentVersion = fileContent.version;
 	const suffix = currentVersion.toString().includes("rc") ? "" : "-dev";
@@ -36,8 +36,7 @@ const processPackageJSON = async filePath => {
 };
 
 const updatePackageJSON = async pkg => {
-	const filePath = pkg.file;
-	console.log("File", filePath);
+	const file = pkg.file;
 	const fileContent = pkg.fileContent;
 	const dependencies = fileContent.dependencies;
 
@@ -47,7 +46,7 @@ const updatePackageJSON = async pkg => {
 		console.info(`updated dependency: ${dep} to ${fileContent.dependencies[dep]}`);
 	});
 
-	await writeFileAsync(filePath, JSON.stringify(fileContent, null, "  "));
+	await writeFileAsync(file, JSON.stringify(fileContent, null, "  "));
 };
 
 const getDependencies = (dependencies) => {
