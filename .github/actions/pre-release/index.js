@@ -14,6 +14,7 @@ const NPM_GROUP = "@next-level";
 const run = async () => {
 	const FILES = await glob("**/packages/**/package.json", { "ignore": "**/node_modules/**/*.*" });
 
+	console.log("FILES", FILES);
 	// Step 1: process package.json files
 	const pkgs = await Promise.all(FILES.map(processPackageJSON));
 
@@ -25,7 +26,6 @@ const run = async () => {
 };
 
 const processPackageJSON = async file => {
-	console.log(file);
 	const folder = file.split("package.json")[0];
 	const fileRead = await readFileAsync(file);
 	const fileContent = JSON.parse(fileRead.toString());
