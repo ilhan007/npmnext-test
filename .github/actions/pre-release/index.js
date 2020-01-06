@@ -4,11 +4,11 @@ const readFileAsync = promisify(fs.readFile);
 const writeFileAsync = promisify(fs.writeFile);
 const child_process = require("child_process");
 const glob = require("glob-promise");
-const gitRev = child_process.execSync("git rev-parse HEAD").toString();
-const { exec } = require("@actions/exec");
+const execSync = child_process.execSync;
+const gitRev = execSync("git rev-parse HEAD").toString();
 
 const PACKAGES = {};
-const NPM_GROUP = "@next-level";
+const NPM_ORG = "@next-level";
 
 const run = async () => {
 	const FILES = await glob("**/packages/**/package.json", { "ignore": "**/node_modules/**/*.*" });
@@ -19,7 +19,7 @@ const run = async () => {
 	// Step 2: update package.json files and publish each package to npm
 	await Promise.all(pkgs.map(async pkg => {
 		await updatePackageJSON(pkg);
-		await publishPackage(pkg);
+		publishPackage(pkg);
 	}));
 };
 
@@ -51,12 +51,12 @@ const updatePackageJSON = async pkg => {
 };
 
 const getDependencies = (dependencies) => {
-	return Object.keys(dependencies).filter(dep => dep.startsWith(NPM_GROUP));
+	return Object.keys(dependencies).filter(dep => dep.startsWith(NPM_ORG));
 };
 
 const publishPackage = async pkg => {
 	console.info(`Publish ${pkg.name}: ${pkg.version} ...`);
-	return exec(`yarn publish ${pkg.folder} --tag=next`);
+	return execSync(`yarn publish ${pkg.folder} --tag=next`);
 };
 
 run().catch(error => {
