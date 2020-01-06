@@ -25,6 +25,7 @@ const run = async () => {
 };
 
 const processPackageJSON = async file => {
+	console.log(file);
 	const folder = file.split("package.json")[0];
 	const fileRead = await readFileAsync(file);
 	const fileContent = JSON.parse(fileRead.toString());
@@ -56,8 +57,7 @@ const getDependencies = (dependencies) => {
 
 const publishPackage = async pkg => {
 	console.info(`Publish ${pkg.name}: ${pkg.version} ...`);
-	console.log(path.join(__dirname, pkg.folder));
-	return exec(`yarn publish ${path.join(__dirname, pkg.folder)} --tag=next`);
+	return exec(`yarn publish ${pkg.folder} --tag=next`);
 };
 
 run().catch(error => {
