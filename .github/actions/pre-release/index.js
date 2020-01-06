@@ -15,16 +15,19 @@ const run = async () => {
 		const packageJSONFile = await readFileAsync(file);
 		const pkgJSON = JSON.parse(packageJSONFile.toString());
 
-		// Checks if the current version already has "RC"(1.0.0-rc.5) or not (0.18.0)
-		// The version with "RC" would become 1.0.0-rc.{RC_NUMBER}.{HASH}
-		// The version without "RC" would become 0.18.0-dev.{HASH}
-		const tag = pkgJSON.version.toString().includes("rc") ? "" : "-dev"
+		// Checks if the current version already has "-rc" (1.0.0-rc.5) or not (0.18.0).
+		// The version with "-rc" would become 1.0.0-rc.{N}.{HASH}
+		// The version without "-rc" would become 0.18.0-dev.{HASH}
+		const suffix = pkgJSON.version.toString().includes("rc") ? "" : "-dev";
 
-		pkgJSON.version = `${pkgJSON.version}${tag}.${gitRev.slice(0,7,)}`;
+		pkgJSON.version = `${pkgJSON.version}${suffix}.${gitRev.slice(0,7,)}`;
 		console.log("Prerelease version: " + pkgJSON.version);
+		console.log("Dependencies:");
+		console.log(pkgJSON.dependencies);
 
 		await writeFileAsync(file, JSON.stringify(pkgJSON, null, "  "));
 
+		// Publish to npm with 'next' tag
 		return exec(`npm publish ${package} --tag=next`);
 	});
 
