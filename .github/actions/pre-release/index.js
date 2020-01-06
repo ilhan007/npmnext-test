@@ -19,16 +19,19 @@ const storePackageInfo = async filePath => {
 	return PACKAGES[name];
 };
 
-const generateNewVersions = pkg => {
+const generateVersion = pkg => {
+	console.info(pkg.fileContent);
 	const currentVersion = pkg.fileContent.version;
 	const suffix = currentVersion.toString().includes("rc") ? "" : "-dev";
 	const newVersion = `${currentVersion}${suffix}.${gitRev.slice(0,7,)}`;
 
 	PACKAGES[pkg.name].version = newVersion;
+	pkg.version = newVersion
 	console.info(`${fileContent.name} next version: ${newVersion}`);
+	return pkg;
 }
 
-const updatePackageJSON = async (pkg) => {
+const updatePackageJSON = async pkg => {
 	const fileContent = pkg.fileContent;
 	const dependencies = fileContent.dependencies;
 	fileContent.version = pkg.version;
@@ -53,12 +56,11 @@ const run = async () => {
 	const FILES = await glob("**/packages/**/package.json", { "ignore": "**/node_modules/**/*.*" });
 
 	// Step 1: store packages info
-	const res = await Promise.all(FILES.map(storePackageInfo));
-	console.log("Promise res:", res);
+	const pkgs = await Promise.all(FILES.map(storePackageInfo));
+	console.log("Promise res:", pkgs);
 
 	// Step 2: generate new npm versions
-	const pkgs = Object.keys(PACKAGES);
-	pkgs.map(generateNewVersions);
+	const pkgs = pkgs.map(generateVersion);
 
 	// Step 3: update package.json nad  publish to npm
 	await Promise.all(pkgs.map(async pkg => {
