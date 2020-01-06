@@ -6,6 +6,10 @@ class MyElement extends HTMLElement {
 		const root = document.createElement('div');
 		shadow.appendChild(root);
 	}
+
+	isCustomElement() {
+		return true;
+	}
 }
 
 export default MyElement;

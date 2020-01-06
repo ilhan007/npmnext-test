@@ -30,6 +30,7 @@ const processPackageJSON = async file => {
 	const fileRead = await readFileAsync(file);
 	const fileContent = JSON.parse(fileRead.toString());
 	const name = fileContent.name;
+
 	const currentVersion = fileContent.version;
 	const suffix = currentVersion.toString().includes("rc") ? "" : "-dev";
 	const version = `${currentVersion}${suffix}.${gitRev.slice(0,7,)}`;
