@@ -16,6 +16,7 @@ const storePackageInfo = async filePath => {
 	const name = fileContent.name;
 
 	PACKAGES[name] = { name, file, fileContent };
+	return PACKAGES[name];
 };
 
 const generateNewVersions = pkg => {
@@ -57,7 +58,7 @@ const run = async () => {
 
 	// Step 2: generate new npm versions
 	const pkgs = Object.keys(PACKAGES);
-	pkgs.map(generateNewVersions(pkg));
+	pkgs.map(generateNewVersions);
 
 	// Step 3: update package.json nad  publish to npm
 	await Promise.all(pkgs.map(async pkg => {
