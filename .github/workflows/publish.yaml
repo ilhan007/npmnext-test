@@ -6,7 +6,6 @@ on:
       - master
 jobs:
   build:
-    name: Build and pre-release
     if: "contains(github.event.head_commit.message, 'fix')"
     runs-on: ubuntu-latest
 
