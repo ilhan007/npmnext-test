@@ -16,7 +16,7 @@ const run = async () => {
 		const packageJSONFile = await readFileAsync(file);
 		const pkgJSON = JSON.parse(packageJSONFile.toString());
 
-		const rc = pkgJSON.version.includes("rc") ? "-rc": "";
+		const rc = pkgJSON.version.toString().includes("rc") ? "-rc": "";
 		pkgJSON.version = `${pkgJSON.version}${rc}.${gitRev.slice(0,7,)}`;
 
 		console.log("Prerelease version: " + pkgJSON.version);
