@@ -1,5 +1,4 @@
 const fs = require("fs");
-const path = require("path");
 const { promisify } = require("util");
 const readFileAsync = promisify(fs.readFile);
 const writeFileAsync = promisify(fs.writeFile);
@@ -14,7 +13,6 @@ const NPM_GROUP = "@next-level";
 const run = async () => {
 	const FILES = await glob("**/packages/**/package.json", { "ignore": "**/node_modules/**/*.*" });
 
-	console.log("FILES", FILES);
 	// Step 1: process package.json files
 	const pkgs = await Promise.all(FILES.map(processPackageJSON));
 
@@ -62,5 +60,5 @@ const publishPackage = async pkg => {
 };
 
 run().catch(error => {
-	console.error("Relase of @next version failed", error);
+	console.error("Release of @next version failed", error);
 });
