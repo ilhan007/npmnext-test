@@ -10,26 +10,17 @@ const { exec } = require("@actions/exec");
 const PACKAGES = {};
 const NPM_GROUP = "@next-level";
 
-const storePackageInfo = async filePath => {
+const processPackageJSON = async filePath => {
 	const file = await readFileAsync(filePath);
 	const fileContent = JSON.parse(file.toString());
 	const name = fileContent.name;
+	const currentVersion = fileContent.version;
+	const suffix = currentVersion.toString().includes("rc") ? "" : "-dev";
+	const version = `${currentVersion}${suffix}.${gitRev.slice(0,7,)}`;
 
-	PACKAGES[name] = { name, file, fileContent };
+	PACKAGES[name] = { name, file, fileContent, version };
 	return PACKAGES[name];
 };
-
-const genNextVersion = pkg => {
-	console.info(pkg.fileContent);
-	const currentVersion = pkg.fileContent.version;
-	const suffix = currentVersion.toString().includes("rc") ? "" : "-dev";
-	const newVersion = `${currentVersion}${suffix}.${gitRev.slice(0,7,)}`;
-
-	PACKAGES[pkg.name].version = newVersion;
-	pkg.version = newVersion
-	console.info(`${fileContent.name} next version: ${newVersion}`);
-	return pkg;
-}
 
 const updatePackageJSON = async pkg => {
 	const fileContent = pkg.fileContent;
@@ -49,26 +40,23 @@ const getDependencies = (dependencies) => {
 };
 
 const publishPackage = async pkg => {
-	return exec(`npm publish ${pkg} --tag=next`)
+	console.info(`Publish ${pkg.name}: ${pkg.version} ...`);
+	return exec(`npm publish ${pkg} --tag=next`);
 };
 
 const run = async () => {
 	const FILES = await glob("**/packages/**/package.json", { "ignore": "**/node_modules/**/*.*" });
 
-	// Step 1: store packages info
-	let pkgs = await Promise.all(FILES.map(storePackageInfo));
-	console.log("Promise res:", pkgs);
+	// Step 1: process package.json files
+	const pkgs = await Promise.all(FILES.map(processPackageJSON));
 
-	// Step 2: generate new npm versions
-	pkgs = pkgs.map(genNextVersion);
-
-	// Step 3: update package.json nad  publish to npm
+	// Step 2: update package.json files and publish each package to npm
 	await Promise.all(pkgs.map(async pkg => {
 		await updatePackageJSON(pkg);
 		await publishPackage(pkg);
 	}));
-}
+};
 
 run().catch(error => {
-	console.log("Action failed", error);
+	console.log("Relase of @next npm version failed", error);
 });
