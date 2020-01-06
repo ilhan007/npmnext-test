@@ -23,16 +23,17 @@ const processPackageJSON = async filePath => {
 };
 
 const updatePackageJSON = async pkg => {
+	const filePath = pkg.file;
 	const fileContent = pkg.fileContent;
 	const dependencies = fileContent.dependencies;
-	fileContent.version = pkg.version;
 
+	fileContent.version = pkg.version;
 	dependencies && getDependencies(dependencies).forEach(dep => {
 		fileContent.dependencies[dep] = PACKAGES[dep].version;
-		console.log(`updated dependency: ${dep} to ${fileContent.dependencies[dep]}`);
+		console.info(`updated dependency: ${dep} to ${fileContent.dependencies[dep]}`);
 	});
 
-	await writeFileAsync(file, JSON.stringify(fileContent, null, "  "));
+	await writeFileAsync(filePath, JSON.stringify(fileContent, null, "  "));
 };
 
 const getDependencies = (dependencies) => {
