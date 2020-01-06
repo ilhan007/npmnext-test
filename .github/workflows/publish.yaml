@@ -28,9 +28,3 @@ jobs:
 
     - name: Prerelease to npm
       uses: ./.github/actions/pre-release
-
-    # - name: Make prerelease to npm
-    #   uses: epeli/npm-release@v1
-    #   with:
-    #     type: prerelease
-    #     token: ${{ secrets.NPM_TOKEN }}

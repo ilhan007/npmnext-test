@@ -43,7 +43,6 @@ const updatePackageJSON = async pkg => {
 	fileContent.version = pkg.version;
 	dependencies && getDependencies(dependencies).forEach(dep => {
 		fileContent.dependencies[dep] = PACKAGES[dep].version;
-		console.info(`updated dependency: ${dep} to ${fileContent.dependencies[dep]}`);
 	});
 
 	await writeFileAsync(file, JSON.stringify(fileContent, null, "  "));
@@ -55,9 +54,9 @@ const getDependencies = (dependencies) => {
 
 const publishPackage = async pkg => {
 	console.info(`Publish ${pkg.name}: ${pkg.version} ...`);
-	return exec(`npm publish ${pkg} --tag=next`);
+	return exec(`yarn publish ${pkg.name} --tag=next`);
 };
 
 run().catch(error => {
-	console.log("Relase of @next npm version failed", error);
+	console.error("Relase of @next version failed", error);
 });
