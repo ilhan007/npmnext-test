@@ -10,6 +10,19 @@ const { exec } = require("@actions/exec");
 const PACKAGES = {};
 const NPM_GROUP = "@next-level";
 
+const run = async () => {
+	const FILES = await glob("**/packages/**/package.json", { "ignore": "**/node_modules/**/*.*" });
+
+	// Step 1: process package.json files
+	const pkgs = await Promise.all(FILES.map(processPackageJSON));
+
+	// Step 2: update package.json files and publish each package to npm
+	await Promise.all(pkgs.map(async pkg => {
+		await updatePackageJSON(pkg);
+		await publishPackage(pkg);
+	}));
+};
+
 const processPackageJSON = async filePath => {
 	const file = await readFileAsync(filePath);
 	const fileContent = JSON.parse(file.toString());
@@ -24,6 +37,7 @@ const processPackageJSON = async filePath => {
 
 const updatePackageJSON = async pkg => {
 	const filePath = pkg.file;
+	console.log("File", filePath);
 	const fileContent = pkg.fileContent;
 	const dependencies = fileContent.dependencies;
 
@@ -43,19 +57,6 @@ const getDependencies = (dependencies) => {
 const publishPackage = async pkg => {
 	console.info(`Publish ${pkg.name}: ${pkg.version} ...`);
 	return exec(`npm publish ${pkg} --tag=next`);
-};
-
-const run = async () => {
-	const FILES = await glob("**/packages/**/package.json", { "ignore": "**/node_modules/**/*.*" });
-
-	// Step 1: process package.json files
-	const pkgs = await Promise.all(FILES.map(processPackageJSON));
-
-	// Step 2: update package.json files and publish each package to npm
-	await Promise.all(pkgs.map(async pkg => {
-		await updatePackageJSON(pkg);
-		await publishPackage(pkg);
-	}));
 };
 
 run().catch(error => {
