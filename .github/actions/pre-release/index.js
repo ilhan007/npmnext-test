@@ -7,6 +7,7 @@ const glob = require("glob-promise");
 const gitRev = child_process.execSync("git rev-parse HEAD").toString();
 const { exec } = require("@actions/exec");
 
+// {name, version, pkgFile}
 const run = async () => {
 	const packages = {};
 	const files = await glob("**/packages/**/package.json", { "ignore": "**/node_modules/**/*.*" });
@@ -20,7 +21,7 @@ const run = async () => {
 		const newVersion = `${currentVersion}${suffix}.${gitRev.slice(0,7,)}`;
 
 		packages[package] = newVersion;
-		console.log(`${package} "@next" version: ${newVersion}`);
+		console.log(`@${package} next version: ${newVersion}`);
 	}
 
 	const updatePackageJSON = async (package, packageJSONFile, pkgJSONContent) => {
@@ -28,8 +29,9 @@ const run = async () => {
 
 		const dependencies = pkgJSONContent.dependencies;
 		if (dependencies) {
-			console.log("Dependencies", dependencies)
-			Object.keys(packages).filter(dep => dep.startsWith("@next-level")).forEach(dep => {
+			console.log("Dependencies", dependencies);
+
+			Object.keys(dependencies).filter(dep => dep.startsWith("@next-level")).forEach(dep => {
 				pkgJSONContent.dependencies[dep] = packages[dep];
 				console.log(`updated dependency: ${dep} to ${pkgJSONContent.dependencies[dep]}`);
 			});
