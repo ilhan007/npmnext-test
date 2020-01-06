@@ -20,7 +20,7 @@ const run = async () => {
 		const suffix = currentVersion.toString().includes("rc") ? "" : "-dev";
 		const newVersion = `${currentVersion}${suffix}.${gitRev.slice(0,7,)}`;
 
-		packages[package] = newVersion;
+		packages[`@${package}`] = newVersion;
 		console.log(`@${package} next version: ${newVersion}`);
 	}
 
