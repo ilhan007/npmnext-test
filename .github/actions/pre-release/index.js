@@ -10,8 +10,8 @@ const { exec } = require("@actions/exec");
 const PACKAGES = {};
 const NPM_GROUP = "@next-level";
 
-const storePackageInfo = async file => {
-	const file = await readFileAsync(file);
+const storePackageInfo = async filePath => {
+	const file = await readFileAsync(filePath);
 	const fileContent = JSON.parse(file.toString());
 	const name = fileContent.name;
 
