@@ -7,9 +7,9 @@ echo "//registry.npmjs.org/:username=${NPM_USERNAME}" >> ./.npmrc
 echo "//registry.npmjs.org/:email=${NPM_EMAIL}" >> ./.npmrc
 echo "//registry.npmjs.org/:_authToken=${NPM_AUTH_TOKEN}" >> ./.npmrc
 
-echo "This is the console ${NPM_USERNAME}" 1>&3
-echo "This is the console ${NPM_EMAIL}" 1>&3
-echo "This is the console ${NPM_AUTH_TOKEN}" 1>&3
+# echo "This is the console ${NPM_USERNAME}" 1>&3
+# echo "This is the console ${NPM_EMAIL}" 1>&3
+# echo "This is the console ${NPM_AUTH_TOKEN}" 1>&3
 
 echo "//registry.npmjs.org/:username=${NPM_USERNAME}" >> ./packages/base/.npmrc
 echo "//registry.npmjs.org/:email=${NPM_EMAIL}" >> ./packages/base/.npmrc
