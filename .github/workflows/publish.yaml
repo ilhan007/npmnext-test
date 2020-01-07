@@ -24,9 +24,7 @@ jobs:
     - name: Auth
       run: npm config set //registry.npmjs.org/:_authToken=$NPM_AUTH_TOKEN
       env:
-        NPM_USERNAME: ${{ secrets.NPM_USERNAME }}
-        NPM_EMAIL: ${{ secrets.NPM_EMAIL }}
-        NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+        NPM_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
     - name: Publish to npm
       env:
@@ -34,5 +32,4 @@ jobs:
         NPM_EMAIL: ${{ secrets.NPM_EMAIL }}
         NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
       run: |
-        bash ./.github/actions/pre-release/setup-npm.sh
         node ./.github/actions/pre-release/index.js
