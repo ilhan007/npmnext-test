@@ -19,7 +19,7 @@ const run = async () => {
 	// Step 2: update package.json files
 	await Promise.all(pkgs.map(updatePackageJSON));
 
-	// Step 3:  publish each package to npm
+	// Step 3: publish each package to npm
 	pkgs.forEach(publishPackage);
 };
 
