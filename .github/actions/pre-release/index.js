@@ -16,11 +16,12 @@ const run = async () => {
 	// Step 1: process package.json files
 	const pkgs = await Promise.all(FILES.map(processPackageJSON));
 
-	// Step 2: update package.json files
-	await Promise.all(pkgs.map(updatePackageJSON));
-
+	 // Step 2: update package.json files
 	// Step 3: publish each package to npm
-	publishPackage(pkg);
+	await Promise.all(pkgs.map(async pkg => {
+		await updatePackageJSON(pkg);
+		publishPackage(pkg); 
+	}));
 };
 
 const processPackageJSON = async file => {
