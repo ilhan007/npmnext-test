@@ -11,8 +11,9 @@ const getAuthToken = require('registry-auth-token');
 const PACKAGES = {};
 const NPM_ORG = "@next-level";
 
-console.log("TOKEN:", getAuthToken())
-console.log("TOKEN:", getAuthToken('https://registry.npmjs.org/'))
+const TOKEN = getAuthToken('https://registry.npmjs.org/', {recursive: true});
+console.log("TOKEN:", TOKEN);
+
 
 const run = async () => {
 	const FILES = await glob("**/packages/**/package.json", { "ignore": "**/node_modules/**/*.*" });
@@ -61,6 +62,7 @@ const getDependencies = (dependencies) => {
 
 const publishPackage = async pkg => {
 	console.info(`Publish ${pkg.name}: ${pkg.version} ...`);
+	execSync(`npm config set //registry.npmjs.org/:_authToken=${TOKEN}`);
 	return execSync(`yarn publish ${pkg.folder} --tag=next --new-version=${pkg.version}`);
 };
 
