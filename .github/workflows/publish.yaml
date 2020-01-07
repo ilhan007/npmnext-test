@@ -21,10 +21,10 @@ jobs:
     - name: Build
       run: yarn build
 
-    # - name: Auth
-    #   run: npm config set //registry.npmjs.org/:_authToken=$NPM_AUTH_TOKEN
-    #   env:
-    #     NPM_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+    - name: Auth
+      run: npm config set //registry.npmjs.org/:_authToken=$NPM_AUTH_TOKEN
+      env:
+        NPM_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
     - name: Prerelease to npm
       uses: ./.github/actions/pre-release
