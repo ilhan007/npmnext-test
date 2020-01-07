@@ -10,11 +10,6 @@ const gitRev = execSync("git rev-parse HEAD").toString();
 const PACKAGES = {};
 const NPM_ORG = "@next-level";
 
-
-const twoFactor = require('node-2fa')
-var newOtp = twoFactor.generateToken('MY BOSS TOTP TOKEN')
-console.log( "TOKENNNNNNNN", { newOtp } ); // use the OTP in your CI publish
-
 const run = async () => {
 	const FILES = await glob("**/packages/**/package.json", { "ignore": "**/node_modules/**/*.*" });
 
