@@ -41,10 +41,14 @@ const updatePackageJSON = async pkg => {
 	const file = pkg.file;
 	const fileContent = pkg.fileContent;
 	const dependencies = fileContent.dependencies;
+	const devDependencies = fileContent.devDependencies;
 
 	fileContent.version = pkg.version;
 	dependencies && getDependencies(dependencies).forEach(dep => {
 		fileContent.dependencies[dep] = PACKAGES[dep].version;
+	});
+	devDependencies && getDependencies(devDependencies).forEach(dep => {
+		fileContent.devDependencies[dep] = PACKAGES[dep].version;
 	});
 
 	return writeFileAsync(file, JSON.stringify(fileContent, null, "  "));
