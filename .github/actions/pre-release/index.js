@@ -9,6 +9,7 @@ const gitRev = execSync("git rev-parse HEAD").toString();
 
 const PACKAGES = {};
 const NPM_ORG = "@next-level";
+const OTP = process.argv[2];
 
 const run = async () => {
 	const FILES = await glob("**/packages/**/package.json", { "ignore": "**/node_modules/**/*.*" });
@@ -56,7 +57,7 @@ const getDependencies = (dependencies) => {
 
 const publishPackage = pkg => {
 	console.info(`Publish ${pkg.name}: ${pkg.version} ...`);
-	execSync(`npm publish ${pkg.folder} --tag=next`);
+	execSync(`yarn publish ${pkg.folder} --tag=next --otp=${OTP}`);
 };
 
 run().catch(error => {
