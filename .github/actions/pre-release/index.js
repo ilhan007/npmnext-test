@@ -30,13 +30,12 @@ const processPackageJSON = async file => {
 	const name = fileContent.name;
 
 	const currentVersion = fileContent.version;
-	const suffix = currentVersion.toString().includes("rc") ? "" : "-dev";
+	const suffix = currentVersion.toString().includes("rc") ? "" : "-next";
 	const version = `${currentVersion}${suffix}.${gitRev.slice(0,7,)}`;
 
 	PACKAGES[name] = { name, file, fileContent, version, folder };
 	return PACKAGES[name];
 };
-
 
 const updatePackageJSON = async pkg => {
 	const file = pkg.file;
