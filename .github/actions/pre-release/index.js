@@ -16,7 +16,7 @@ const run = async () => {
 	// Step 1: process package.json files
 	const pkgs = await Promise.all(FILES.map(processPackageJSON));
 
-	// Step 2: update package.json files and publish each package to npm
+	// Step 2: update package.json files
 	await Promise.all(pkgs.map(updatePackageJSON));
 
 	// Step 3:  publish each package to npm
@@ -56,7 +56,7 @@ const getDependencies = (dependencies) => {
 
 const publishPackage = pkg => {
 	console.info(`Publish ${pkg.name}: ${pkg.version} ...`);
-	execSync(`yarn publish ${pkg.folder} --tag=next --new-version=${pkg.version} --scripts-prepend-node-path`);
+	execSync(`yarn publish ${pkg.folder} --tag=next --new-version=${pkg.version}`);
 };
 
 run().catch(error => {
