@@ -16,11 +16,11 @@ const run = async () => {
 	// Step 1: process package.json files
 	const pkgs = await Promise.all(FILES.map(processPackageJSON));
 
-	// Step 2: update package.json files and publish each package to npm
-	await Promise.all(pkgs.map(async pkg => {
-		await updatePackageJSON(pkg);
-		publishPackage(pkg);
-	}));
+	// Step 2: update package.json files
+	await Promise.all(pkgs.map(updatePackageJSON));
+
+	// Step 3: publish each package to npm
+	publishPackage(pkg);
 };
 
 const processPackageJSON = async file => {
@@ -47,7 +47,7 @@ const updatePackageJSON = async pkg => {
 		fileContent.dependencies[dep] = PACKAGES[dep].version;
 	});
 
-	await writeFileAsync(file, JSON.stringify(fileContent, null, "  "));
+	return writeFileAsync(file, JSON.stringify(fileContent, null, "  "));
 };
 
 const getDependencies = (dependencies) => {
