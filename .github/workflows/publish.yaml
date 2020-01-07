@@ -11,7 +11,7 @@ jobs:
     if: "contains(github.event.head_commit.message, 'chore(prerelease)')"
 
   env:
-      CI: true
+    CI: true
 
     steps:
     - uses: actions/checkout@v1
