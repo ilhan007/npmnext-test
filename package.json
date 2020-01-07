@@ -24,6 +24,7 @@
         "packages/fiori"
     ],
     "dependencies": {
+        "node-2fa": "^1.1.2",
         "registry-auth-token": "^4.0.0"
     }
 }
