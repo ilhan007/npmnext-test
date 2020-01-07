@@ -6,30 +6,20 @@ on:
       - master
 jobs:
   build:
-    name: 'Pre-release'
-    runs-on: ubuntu-latest
     if: "contains(github.event.head_commit.message, 'chore(prerelease)')"
-
-    strategy:
-      matrix:
-        node-version: [12.x]
+    runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v1
-
-    - name: Setup node
     - uses: actions/setup-node@v1
       with:
-        node-version: ${{ matrix.node-version }}
+        node-version: 12
 
-    - name: Install dependencies
+    - name: Install
       run: yarn
 
-    - name: Build packages
+    - name: Build
       run: yarn build
-
-    # - name: Auth
-    #   run: npm config set //registry.npmjs.org/:_authToken=$NPM_AUTH_TOKEN
 
     - name: Publish to npm
       env:
