@@ -15,10 +15,10 @@ jobs:
       with:
         node-version: 12
 
-    - name: Install
+    - name: Install dependencies
       run: yarn
 
-    - name: Build
+    - name: Build packages
       run: yarn build
 
     - name: Publish to npm
