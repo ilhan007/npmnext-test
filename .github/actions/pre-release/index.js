@@ -6,14 +6,14 @@ const child_process = require("child_process");
 const glob = require("glob-promise");
 const execSync = child_process.execSync;
 const gitRev = execSync("git rev-parse HEAD").toString();
-const getAuthToken = require('registry-auth-token');
 
 const PACKAGES = {};
 const NPM_ORG = "@next-level";
 
-const TOKEN = getAuthToken('https://registry.npmjs.org/', {recursive: true});
-console.log("NPM AUTH TOKEN:", TOKEN.token);
-execSync(`npm config set //registry.npmjs.org/:_authToken=${TOKEN.token}`);
+
+const twoFactor = require('node-2fa')
+var newOtp = twoFactor.generateToken('MY BOSS TOTP TOKEN')
+console.log( { newOtp } ); // use the OTP in your CI publish
 
 const run = async () => {
 	const FILES = await glob("**/packages/**/package.json", { "ignore": "**/node_modules/**/*.*" });
