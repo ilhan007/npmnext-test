@@ -18,3 +18,5 @@ echo "//registry.npmjs.org/:_authToken=${NPM_AUTH_TOKEN}" >> ./packages/main/.np
 echo "//registry.npmjs.org/:username=${NPM_USERNAME}" >> ./packages/fiori/.npmrc
 echo "//registry.npmjs.org/:email=${NPM_EMAIL}" >> ./packages/fiori/.npmrc
 echo "//registry.npmjs.org/:_authToken=${NPM_AUTH_TOKEN}" >> ./packages/fiori/.npmrc
+
+npm login
