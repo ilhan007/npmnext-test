@@ -10,7 +10,8 @@
         "build": "npm-run-all --sequential build:main build:fiori build:base",
         "build:base": "cd packages/base && yarn build",
         "build:main": "cd packages/main && yarn build",
-        "build:fiori": "cd packages/fiori && yarn build"
+        "build:fiori": "cd packages/fiori && yarn build",
+        "prerelease": "node ./.github/actions/index.js"
     },
     "devDependencies": {
         "glob-promise": "^3.4.0",
