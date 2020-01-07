@@ -57,7 +57,7 @@ const getDependencies = (dependencies) => {
 
 const publishPackage = async pkg => {
 	console.info(`Publish ${pkg.name}: ${pkg.version} ...`);
-	return execSync(`yarn publish ${pkg.folder} --tag=next --new-version`);
+	return execSync(`yarn publish ${pkg.folder} --tag=next --new-version=${pkg.version}`);
 };
 
 run().catch(error => {
