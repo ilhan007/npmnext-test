@@ -37,6 +37,7 @@ const processPackageJSON = async file => {
 	return PACKAGES[name];
 };
 
+
 const updatePackageJSON = async pkg => {
 	const file = pkg.file;
 	const fileContent = pkg.fileContent;
