@@ -29,8 +29,7 @@ const processPackageJSON = async file => {
 	const fileContent = JSON.parse(fileRead.toString());
 	const name = fileContent.name;
 
-	const currentVersion = fileContent.version.replace(/-rc\.[0-9]+/, "");
-	const version = `${currentVersion}-${gitRev.slice(0,9,)}`;
+	const version = `0.0.0-${gitRev.slice(0,9,)}`;
 
 	PACKAGES[name] = { name, file, fileContent, version, folder };
 	return PACKAGES[name];
