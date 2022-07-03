@@ -1,11 +1,11 @@
-name: Publish
+name: Release Preview
 
 on:
   push:
     branches:
       - main
 jobs:
-  build:
+  release:
     runs-on: ubuntu-latest
 
     steps:
@@ -19,6 +19,14 @@ jobs:
 
     - name: Build packages
       run: yarn build
+
+      - name: NPM Registry
+      env:
+        NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+      run: |
+        echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > packages/base/.npmrc
+        echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > packages/main/.npmrc
+        echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > packages/fiori/.npmrc
 
     - name: Publish
       env:
