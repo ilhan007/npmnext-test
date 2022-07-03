@@ -20,7 +20,7 @@ jobs:
     - name: Build packages
       run: yarn build
 
-      - name: NPM Registry
+    - name: NPM Registry
       env:
         NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
       run: |
