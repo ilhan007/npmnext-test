@@ -6,7 +6,6 @@ on:
       - main
 jobs:
   build:
-    if: "contains(github.event.head_commit.message, 'prerelease')"
     runs-on: ubuntu-latest
 
     steps:
@@ -31,6 +30,7 @@ jobs:
           git config user.name "$NPM_USERNAME"
           git_hash=$(git rev-parse --short "$GITHUB_SHA")
           git checkout main
+          npm whoami
           ${GITHUB_WORKSPACE}/node_modules/.bin/lerna publish "0.0.0-${git_hash}" \
             --exact \
             --no-push \
