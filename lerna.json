@@ -1,0 +1,23 @@
+{
+	"packages": [
+		"packages/*"
+	],
+	"version": "1.0.0",
+	"npmClient": "yarn",
+	"useWorkspaces": true,
+	"command": {
+		"version": {
+			"allowBranch": "main",
+			"conventionalCommits": true,
+			"yes": true,
+			"message": "chore(release): publish %s [ci skip]"
+	},
+		"publish": {
+			"allowBranch": "main",
+			"conventionalCommits": true,
+			"yes": true,
+			"preDistTag": "next",
+			"message": "chore(release): publish %s [ci skip]"
+		}
+	}
+}
