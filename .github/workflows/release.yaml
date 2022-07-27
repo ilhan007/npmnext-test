@@ -33,4 +33,4 @@ jobs:
         NPM_EMAIL: ${{ secrets.NPM_EMAIL }}
         NPM_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       run: |
-        node ./.github/actions/release.js
+        node ./.github/actions/release.js --version=${{ github.event.inputs.version }} --version=${{ github.event.inputs.tag }}
