@@ -21,10 +21,10 @@ jobs:
         node-version: 16
         cache: 'yarn'
 
-    - name: Install dependencies
+    - name: Install
       run: yarn
 
-    - name: Build packages
+    - name: Build
       run: yarn build
 
     - name: Publish
