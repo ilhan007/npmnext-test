@@ -33,10 +33,13 @@ jobs:
       run: |
           git config user.email ${{ secrets.NPM_EMAIL }}
           git config user.name ${{ secrets.NPM_USER }}
+
           git_hash=$(git rev-parse --short "$GITHUB_SHA")
-          git checkout main
-          ${GITHUB_WORKSPACE}/node_modules/.bin/lerna publish "0.0.0-${git_hash}"  --no-verify-access \
+          current_branch=$(node -p -e "'${{ github.ref }}'.replace('refs/heads/', '')")
+
+          ${GITHUB_WORKSPACE}/node_modules/.bin/lerna publish "0.0.0-${git_hash}" \
             --exact \
             --no-push \
             --no-git-tag-version \
-            --pre-dist-tag dev
+            --pre-dist-tag dev \
+            --allow-branch ${current_branch}
