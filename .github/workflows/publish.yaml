@@ -1,9 +1,8 @@
 name: Release Preview
 
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch
+
 jobs:
   release:
     runs-on: ubuntu-latest
