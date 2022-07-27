@@ -6,21 +6,20 @@ on:
       version:
         description: 'New version'     
         required: true
-      tag:
-        description: 'Tag'     
-        required: true
-        default: latest
-jobs:
-  release:
-    runs-on: ubuntu-latest
+        tag:
+          description: 'Tag'     
+          required: true
+          default: latest
 
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
-
-    - name: Setup Node.js environment
-        uses: actions/setup-node@v3.4.1
-        with:
-          registry-url: 'https://registry.npmjs.org'
+    - uses: actions/setup-node@v3
+      with:
+        node-version: 16
+        cache: 'yarn'
 
     - name: Install dependencies
       run: yarn
