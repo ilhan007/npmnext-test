@@ -8,10 +8,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v1
-    - uses: actions/setup-node@v1
-      with:
-        node-version: 16
+    - uses: actions/checkout@v3
+
+    - name: Setup Node.js environment
+        uses: actions/setup-node@v3.4.1
+        with:
+          registry-url: 'https://registry.npmjs.org'
 
     - name: Install dependencies
       run: yarn
@@ -19,27 +21,10 @@ jobs:
     - name: Build packages
       run: yarn build
 
-    - name: NPM Registry
-      env:
-        NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-      run: |
-        echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > packages/base/.npmrc
-        echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > packages/main/.npmrc
-        echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > packages/fiori/.npmrc
-
     - name: Publish
       env:
+        NPM_USERNAME: ${{ secrets.NPM_USERNAME }}
+        NPM_EMAIL: ${{ secrets.NPM_EMAIL }}
         NPM_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       run: |
-          git config user.email ${{ secrets.NPM_EMAIL }}
-          git config user.name ${{ secrets.NPM_USER }}
-
-          git_hash=$(git rev-parse --short "$GITHUB_SHA")
-          current_branch=$(node -p -e "'${{ github.ref }}'.replace('refs/heads/', '')")
-
-          ${GITHUB_WORKSPACE}/node_modules/.bin/lerna publish "0.0.0-${git_hash}" \
-            --exact \
-            --no-push \
-            --no-git-tag-version \
-            --pre-dist-tag dev \
-            --allow-branch ${current_branch}
+        node ./.github/actions/release.js
