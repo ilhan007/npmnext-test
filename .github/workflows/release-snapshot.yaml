@@ -1,15 +1,7 @@
 name: Release Preview
 
 on:
-  workflow_dispatch:
-    inputs:
-      version:
-        description: 'New version'     
-        required: true
-        tag:
-          description: 'Tag'     
-          required: true
-          default: latest
+  workflow_dispatch
 
 jobs:
   build-and-release:
