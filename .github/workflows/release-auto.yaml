@@ -17,7 +17,7 @@ jobs:
         cache: 'yarn'
 
     - name: Checkout and pull branch
-      run: git checkout "${GITHUB_REF:11}" && git pull
+      run: git checkout "${}" && git pull
 
     - name: Install
       run: yarn
@@ -32,7 +32,7 @@ jobs:
           git config user.email ${{ secrets.NPM_EMAIL }}
           git config user.name ${{ secrets.NPM_USER }}
 
-          ${GITHUB_WORKSPACE}/node_modules/.bin/lerna publish minor --conventional-prerelease --create-release github
+          ${GITHUB_WORKSPACE}/node_modules/.bin/lerna publish minor --conventional-prerelease --create-release github --skip-git
       env:
         GH_TOKEN: ${{ secrets.GH_TOKEN }} 
         NPM_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
