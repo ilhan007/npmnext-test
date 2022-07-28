@@ -24,13 +24,13 @@ jobs:
 
     - name: Publish
         run: |
-          yarn config set //registry.npmjs.org/:_authToken=${NPM_TOKEN}
+          yarn config set https://registry.npmjs.org/:_authToken=${NPM_TOKEN}
+
           git config user.email ${{ secrets.NPM_EMAIL }}
           git config user.name ${{ secrets.NPM_USER }}
-          ${GITHUB_WORKSPACE}/node_modules/.bin/lerna publish ${{ github.event.inputs.release_type }} \
-            ${{ (github.event.inputs.prerelease == 'true' && '--conventional-prerelease') || '--conventional-graduate' }} \
-            --create-release github
+
+          ${GITHUB_WORKSPACE}/node_modules/.bin/lerna publish minor --conventional-prerelease --create-release github
         env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          GH_TOKEN: ${{ secrets.GH_TOKEN }} 
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           
