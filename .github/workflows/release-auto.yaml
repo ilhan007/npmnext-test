@@ -24,7 +24,7 @@ jobs:
 
     - name: Publish
         run: |
-          npm config set //registry.npmjs.org/:_authToken=${NPM_TOKEN}
+          yarn config set //registry.npmjs.org/:_authToken=${NPM_TOKEN}
           git config user.email ${{ secrets.NPM_EMAIL }}
           git config user.name ${{ secrets.NPM_USER }}
           ${GITHUB_WORKSPACE}/node_modules/.bin/lerna publish ${{ github.event.inputs.release_type }} \
