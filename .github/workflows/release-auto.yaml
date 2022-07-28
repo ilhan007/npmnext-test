@@ -21,8 +21,8 @@ jobs:
 
     - name: Build
       run: yarn build
-   
-      - name: publish
+
+    - name: Publish
         run: |
           npm config set //registry.npmjs.org/:_authToken=${NPM_TOKEN}
           git config user.email ${{ secrets.NPM_EMAIL }}
