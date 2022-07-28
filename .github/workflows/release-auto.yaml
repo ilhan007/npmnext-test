@@ -30,7 +30,7 @@ jobs:
           git config user.name ${{ secrets.NPM_USER }}
 
           ${GITHUB_WORKSPACE}/node_modules/.bin/lerna publish minor --conventional-prerelease --create-release github
-        env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }} 
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      env:
+        GH_TOKEN: ${{ secrets.GH_TOKEN }} 
+        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           
