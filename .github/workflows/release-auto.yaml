@@ -28,8 +28,9 @@ jobs:
 
           git config user.email ${{ secrets.GIT_EMAIL }}
           git config user.name ${{ secrets.GIT_NAME }}
+          git checkout $GIT_BRANCH
 
-          ${GITHUB_WORKSPACE}/node_modules/.bin/lerna publish minor --conventional-prerelease --create-release github --skip-git
+          ${GITHUB_WORKSPACE}/node_modules/.bin/lerna publish minor --conventional-prerelease --create-release github --no-git-tag-version --no-push
       env:
         GH_TOKEN: ${{ secrets.GH_TOKEN }} 
         NPM_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
