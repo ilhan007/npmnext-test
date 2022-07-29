@@ -16,9 +16,6 @@ jobs:
         node-version: 16
         cache: 'yarn'
 
-    - name: Checkout and pull branch
-      run: git checkout "${}" && git pull
-
     - name: Install
       run: yarn
 
@@ -29,8 +26,8 @@ jobs:
       run: |
           yarn config set https://registry.npmjs.org/:_authToken=${NPM_AUTH_TOKEN}
 
-          git config user.email ${{ secrets.NPM_EMAIL }}
-          git config user.name ${{ secrets.NPM_USER }}
+          git config user.email ${{ secrets.GIT_EMAIL }}
+          git config user.name ${{ secrets.GIT_NAME }}
 
           ${GITHUB_WORKSPACE}/node_modules/.bin/lerna publish minor --conventional-prerelease --create-release github --skip-git
       env:
