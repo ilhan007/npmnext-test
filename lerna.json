@@ -16,6 +16,7 @@
 			"allowBranch": "main",
 			"conventionalCommits": true,
 			"yes": true,
+			"verifyAccess": false,
 			"preDistTag": "next",
 			"message": "chore(release): publish %s [ci skip]"
 		}
