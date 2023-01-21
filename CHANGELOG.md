@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.4.0](https://github.com/ilhan007/npmnext-sample/compare/v1.3.3...v1.4.0) (2023-01-21)
+
+
+### Features
+
+* **base:** new comment ([4bcad85](https://github.com/ilhan007/npmnext-sample/commit/4bcad85003df4ad4dfeea02405d46efddb801d4f))
+* number 6 ([1c83e70](https://github.com/ilhan007/npmnext-sample/commit/1c83e708a6ce77e47c6c8d03ff1934e0da24e658))
+
+
+
+
+
 ## 1.3.3 (2023-01-21)
 
 **Note:** Version bump only for package npmnext-sample
