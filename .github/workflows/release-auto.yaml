@@ -33,6 +33,7 @@ jobs:
         yarn config set https://registry.npmjs.org/:_authToken=${NPM_AUTH_TOKEN}
         git config user.name "${{ github.actor }}"
         git config user.email "${{ github.actor}}@users.noreply.github.com"
-        npx lerna version --conventional-commits --yes
-        npx lerna publish from-git --yes
+        npm whoami
+        yarn lerna version --conventional-commits --yes
+        yarn lerna publish from-git --yes
           
