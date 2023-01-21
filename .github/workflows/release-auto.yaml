@@ -23,14 +23,24 @@ jobs:
     - name: Build
       run: yarn build
 
-    - name: Publish
-      run: |
-          yarn config set https://registry.npmjs.org/:_authToken=${NPM_AUTH_TOKEN}
-          git config user.email ${{ secrets.GIT_EMAIL }}
-          git config user.name ${{ secrets.GIT_NAME }}
-          npx lerna version --conventional-commits --conventional-graduate --yes
-          npx lerna publish from-git --yes
+    - name: Setup registry
       env:
-        GH_TOKEN: ${{ secrets.GH_TOKEN }} 
-        NPM_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+      run: |
+        yarn config set https://registry.npmjs.org/:_authToken=${NPM_AUTH_TOKEN}
+  
+   - name: Publish
+      env:
+        GH_TOKEN: ${{ secrets.GH_TOKEN }}
+      run: |
+        git config user.name "${{ github.actor }}"
+        git config user.email "${{ github.actor}}@users.noreply.github.com"
+
+        if [ ${{ github.base_ref }} = development ]; then
+          npx lerna version --conventional-commits --conventional-prerelease --preid beta --yes
+        else
+          npx lerna version --conventional-commits --conventional-graduate --yes
+        fi
+
+        npx lerna publish from-git --yes
           
