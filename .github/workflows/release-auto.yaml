@@ -29,7 +29,7 @@ jobs:
       run: |
         yarn config set https://registry.npmjs.org/:_authToken=${NPM_AUTH_TOKEN}
   
-   - name: Publish
+    - name: Publish
       env:
         GH_TOKEN: ${{ secrets.GH_TOKEN }}
       run: |
