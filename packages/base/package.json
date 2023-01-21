@@ -1,18 +1,18 @@
 {
-    "name": "@next-level/base",
-    "version": "1.0.0",
-    "private": false,
-    "repository": {
-      "type": "git",
-      "url": "git+https://github.com/ilhan007/npmnext-sample.git"
-    },
-    "scripts": {
-      "build": "copy-and-watch src/**/*.js dist",
-      "prepublishOnly": "npm run build"
-    },
-    "devDependencies": {
-        "copy-and-watch": "^0.1.4"
-    },
-    "author": "",
-    "license": "ISC"
+  "name": "@next-level/base",
+  "version": "1.1.0",
+  "private": false,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ilhan007/npmnext-sample.git"
+  },
+  "scripts": {
+    "build": "copy-and-watch src/**/*.js dist",
+    "prepublishOnly": "npm run build"
+  },
+  "devDependencies": {
+    "copy-and-watch": "^0.1.4"
+  },
+  "author": "",
+  "license": "ISC"
 }
