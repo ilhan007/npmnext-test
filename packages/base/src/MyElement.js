@@ -5,8 +5,6 @@ class MyElement extends HTMLElement {
 		const shadow = this.attachShadow({ mode: "open" });
 		const root = document.createElement('div');
 		shadow.appendChild(root);
-
-		//comment
 	}
 
 	isCustomElement() {
