@@ -30,7 +30,7 @@ jobs:
         NPM_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         GH_TOKEN: ${{ secrets.GH_TOKEN }}
       run: |
-        yarn config set https://registry.npmjs.org/:_authToken=${NPM_AUTH_TOKEN}
+        echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > .npmrc
         git config user.name "${{ github.actor }}"
         git config user.email "${{ github.actor}}@users.noreply.github.com"
         yarn lerna version --conventional-commits --yes --create-release github 
