@@ -36,4 +36,3 @@ jobs:
         npm whoami
         yarn lerna version --conventional-commits --yes
         yarn lerna publish from-git --yes
-          
