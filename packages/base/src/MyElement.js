@@ -10,6 +10,10 @@ class MyElement extends HTMLElement {
 	isCustomElement() {
 		return true;
 	}
+
+	isBaseElement() {
+		return true;
+	}
 }
 
 export default MyElement;
