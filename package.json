@@ -11,7 +11,8 @@
         "build:base": "cd packages/base && yarn build",
         "build:main": "cd packages/main && yarn build",
         "build:fiori": "cd packages/fiori && yarn build",
-        "prerelease": "node ./.github/actions/pre-release/index.js"
+        "test": "echo TESTS PASSED",
+        "release": "node ./.github/actions/release.js"
     },
     "devDependencies": {
         "command-line-args": "^5.2.1",

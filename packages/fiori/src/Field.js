@@ -21,6 +21,10 @@ class MyField extends HTMLElement {
 		root.appendChild(input)
 		shadow.appendChild(root);
 	}
+
+	onclick() {
+		console.log("Hi")
+	}
 }
 
 window.customElements.define("my-field", MyField);

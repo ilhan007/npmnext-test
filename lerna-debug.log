@@ -1,0 +1,102 @@
+0 silly argv {
+0 silly argv   _: [ 'version' ],
+0 silly argv   'conventional-commits': true,
+0 silly argv   conventionalCommits: true,
+0 silly argv   lernaVersion: '5.1.6',
+0 silly argv   '$0': 'lerna'
+0 silly argv }
+1 notice cli v5.1.6
+2 verbose rootPath /Users/i301342/Documents/SAPDevelop/npmnext-test
+3 info current version 1.1.0
+4 silly isAnythingCommitted
+5 verbose isAnythingCommitted 1
+6 silly getCurrentBranch
+7 verbose currentBranch main
+8 silly remoteBranchExists
+9 silly isBehindUpstream
+10 silly isBehindUpstream main is behind origin/main by 0 commit(s) and ahead by 5
+11 silly hasTags
+12 verbose hasTags true
+13 silly git-describe.sync "v1.2.6-5-g4387e87" => {"lastTagName":"v1.2.6","lastVersion":"v1.2.6","refCount":"5","sha":"4387e87","isDirty":false}
+14 info Looking for changed packages since v1.2.6
+15 silly checking diff packages/base
+16 silly found diff in packages/base/package.json
+17 verbose filtered diff [ 'packages/base/package.json' ]
+18 silly checking diff packages/fiori
+19 silly found diff in packages/fiori/CHANGELOG.md
+19 silly found diff in packages/fiori/package.json
+20 verbose filtered diff [ 'packages/fiori/CHANGELOG.md', 'packages/fiori/package.json' ]
+21 silly checking diff packages/main
+22 silly found diff in packages/main/package.json
+23 verbose filtered diff [ 'packages/main/package.json' ]
+24 verbose updated @next-level/base
+25 verbose updated @next-level/fiori
+26 verbose updated @next-level/main
+27 verbose git-describe undefined => "v1.2.6-5-g4387e87"
+28 silly git-describe parsed => {"lastTagName":"v1.2.6","lastVersion":"v1.2.6","refCount":"5","sha":"4387e87","isDirty":false}
+29 silly fixed for @next-level/base at /Users/i301342/Documents/SAPDevelop/npmnext-test/packages/base
+30 verbose getChangelogConfig using preset "conventional-changelog-angular"
+31 silly npa Result {
+31 silly npa   type: 'tag',
+31 silly npa   registry: true,
+31 silly npa   where: undefined,
+31 silly npa   raw: 'conventional-changelog-angular',
+31 silly npa   name: 'conventional-changelog-angular',
+31 silly npa   escapedName: 'conventional-changelog-angular',
+31 silly npa   scope: undefined,
+31 silly npa   rawSpec: '',
+31 silly npa   saveSpec: null,
+31 silly npa   fetchSpec: 'latest',
+31 silly npa   gitRange: undefined,
+31 silly npa   gitCommittish: undefined,
+31 silly npa   hosted: undefined
+31 silly npa }
+32 verbose getChangelogConfig Attempting to resolve preset "conventional-changelog-angular"
+33 info getChangelogConfig Successfully resolved preset "conventional-changelog-angular"
+34 verbose fixed increment 1.1.0 by patch
+35 silly fixed for @next-level/fiori at /Users/i301342/Documents/SAPDevelop/npmnext-test/packages/fiori
+36 verbose fixed increment 1.1.0 by minor
+37 silly fixed for @next-level/main at /Users/i301342/Documents/SAPDevelop/npmnext-test/packages/main
+38 verbose fixed increment 1.1.0 by patch
+39 info auto-confirmed
+40 info execute Skipping releases
+41 silly lifecycle No script for "preversion" in "npmnext-sample", continuing
+42 silly lifecycle No script for "preversion" in "@next-level/base", continuing
+43 silly lifecycle No script for "version" in "@next-level/base", continuing
+44 silly fixed for @next-level/base at /Users/i301342/Documents/SAPDevelop/npmnext-test/packages/base
+45 silly fixed writing new entry: "# [1.2.0](https://github.com/ilhan007/npmnext-sample/compare/v1.2.6...v1.2.0) (2023-01-21)\n\n**Note:** Version bump only for package @next-level/base\n\n\n\n"
+46 verbose fixed wrote /Users/i301342/Documents/SAPDevelop/npmnext-test/packages/base/CHANGELOG.md
+47 silly lifecycle No script for "preversion" in "@next-level/fiori", continuing
+48 silly lifecycle No script for "preversion" in "@next-level/main", continuing
+49 silly lifecycle No script for "version" in "@next-level/fiori", continuing
+50 silly fixed for @next-level/fiori at /Users/i301342/Documents/SAPDevelop/npmnext-test/packages/fiori
+51 silly lifecycle No script for "version" in "@next-level/main", continuing
+52 silly fixed for @next-level/main at /Users/i301342/Documents/SAPDevelop/npmnext-test/packages/main
+53 silly fixed writing new entry: "# [1.2.0](https://github.com/ilhan007/npmnext-sample/compare/v1.2.6...v1.2.0) (2023-01-21)\n\n\n### Bug Fixes\n\n* **Field:** remove comment ([4387e87](https://github.com/ilhan007/npmnext-sample/commit/4387e87243a3ab9a9bf921142415764c6ad106bf))\n\n\n### Features\n\n* new component ([fe4b0ca](https://github.com/ilhan007/npmnext-sample/commit/fe4b0ca8beb5504305bc432f404f6338ad5f6a9a))\n\n\n\n"
+54 silly fixed writing new entry: "# [1.2.0](https://github.com/ilhan007/npmnext-sample/compare/v1.2.6...v1.2.0) (2023-01-21)\n\n**Note:** Version bump only for package @next-level/main\n\n\n\n"
+55 verbose fixed wrote /Users/i301342/Documents/SAPDevelop/npmnext-test/packages/fiori/CHANGELOG.md
+56 verbose fixed wrote /Users/i301342/Documents/SAPDevelop/npmnext-test/packages/main/CHANGELOG.md
+57 silly root for npmnext-sample at /Users/i301342/Documents/SAPDevelop/npmnext-test
+58 silly root writing new entry: "# [1.2.0](https://github.com/ilhan007/npmnext-sample/compare/v1.2.6...v1.2.0) (2023-01-21)\n\n\n### Bug Fixes\n\n* **Field:** remove comment ([4387e87](https://github.com/ilhan007/npmnext-sample/commit/4387e87243a3ab9a9bf921142415764c6ad106bf))\n\n\n### Features\n\n* new component ([fe4b0ca](https://github.com/ilhan007/npmnext-sample/commit/fe4b0ca8beb5504305bc432f404f6338ad5f6a9a))\n\n\n\n"
+59 verbose root wrote /Users/i301342/Documents/SAPDevelop/npmnext-test/CHANGELOG.md
+60 silly lifecycle No script for "version" in "npmnext-sample", continuing
+61 silly gitAdd [
+61 silly gitAdd   'packages/base/package.json',
+61 silly gitAdd   'packages/base/CHANGELOG.md',
+61 silly gitAdd   'packages/fiori/package.json',
+61 silly gitAdd   'packages/main/package.json',
+61 silly gitAdd   'packages/fiori/CHANGELOG.md',
+61 silly gitAdd   'packages/main/CHANGELOG.md',
+61 silly gitAdd   'CHANGELOG.md',
+61 silly gitAdd   'lerna.json'
+61 silly gitAdd ]
+62 silly gitCommit chore(release): publish v1.2.0 [ci skip]
+63 verbose git [ 'commit', '-m', 'chore(release): publish v1.2.0 [ci skip]' ]
+64 silly gitTag v1.2.0
+65 verbose git [ 'tag', 'v1.2.0', '-m', 'v1.2.0' ]
+66 error Error: Command failed with exit code 128: git tag v1.2.0 -m v1.2.0
+66 error fatal: tag 'v1.2.0' already exists
+66 error     at makeError (/Users/i301342/Documents/SAPDevelop/npmnext-test/node_modules/execa/lib/error.js:60:11)
+66 error     at handlePromise (/Users/i301342/Documents/SAPDevelop/npmnext-test/node_modules/execa/index.js:118:26)
+66 error     at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+66 error     at async Promise.all (index 0)

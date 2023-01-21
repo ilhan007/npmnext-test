@@ -1,0 +1,24 @@
+name: Checks # Workflow name
+
+on:
+  pull_request:
+    types: [opened]
+
+jobs: # A workflow can have multiple jobs
+  checks: # Name of the job
+    runs-on: ubuntu-latest # Instance type where job will run
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-node@v3
+      with:
+        node-version: 16
+        cache: 'yarn'
+
+    - name: Install
+      run: yarn
+
+    - name: Build
+      run: yarn build
+
+    - name: Test
+      run: yarn test

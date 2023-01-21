@@ -2,7 +2,7 @@
 	"packages": [
 		"packages/*"
 	],
-	"version": "1.0.0",
+	"version": "1.3.0",
 	"npmClient": "yarn",
 	"useWorkspaces": true,
 	"command": {
@@ -11,7 +11,7 @@
 			"conventionalCommits": true,
 			"yes": true,
 			"message": "chore(release): publish %s [ci skip]"
-	},
+		},
 		"publish": {
 			"allowBranch": "main",
 			"conventionalCommits": true,
