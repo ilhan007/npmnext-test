@@ -7,17 +7,6 @@ class MyElement extends HTMLElement {
 		shadow.appendChild(root);
 	}
 
-	isCustomElement() {
-		return true;
-	}
-
-	get baseElement() {
-		return true;
-	}
-
-	get hasContent() {
-		return false;
-	}
 }
 
 export default MyElement;
