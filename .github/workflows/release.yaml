@@ -34,7 +34,8 @@ jobs:
         NPM_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         GH_TOKEN: ${{ secrets.GH_TOKEN }}
       run: |
-        node ./.github/actions/release.js --version=${{ github.event.inputs.version }} --tag=${{ github.event.inputs.tag }}
+        npm config set //registry.npmjs.org/:_authToken=${NPM_AUTH_TOKEN}
         git config user.name "${{ github.actor }}"
         git config user.email "${{ github.actor}}@users.noreply.github.com"
-        yarn lerna version ${{ github.event.inputs.version }} --exact --conventional-prerelease --force-publish --yes --create-release github 
+        yarn lerna version --conventional-commits --yes --create-release github 
+        yarn lerna publish from-git --yes
