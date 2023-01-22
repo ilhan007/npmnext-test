@@ -14,6 +14,10 @@ class MyElement extends HTMLElement {
 	isBaseElement() {
 		return true;
 	}
+
+	get hasContent() {
+		return false;
+	}
 }
 
 export default MyElement;
