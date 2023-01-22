@@ -5,6 +5,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## 1.6.2 (2023-01-22)
 
+
 **Note:** Version bump only for package npmnext-sample
 
 
