@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 1.6.0 (2023-01-22)
+
+
+### Features
+
+* new feat ([b50ddc2](https://github.com/ilhan007/npmnext-sample/commit/b50ddc2187910f2d0c52ff8b9b909fe1c8b644a0))
+
+
+
+
+
 ## 1.5.3 (2023-01-22)
 
 **Note:** Version bump only for package npmnext-sample
