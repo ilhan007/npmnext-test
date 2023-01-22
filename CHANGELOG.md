@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.6.6](https://github.com/ilhan007/npmnext-sample/compare/v1.6.5...v1.6.6) (2023-01-22)
+
+
+### Features
+
+* dada ([4902bcf](https://github.com/ilhan007/npmnext-sample/commit/4902bcfff4bb65009d90e86d6a2d9a88587539b0))
+
+
+
+
+
 ## 1.6.2 (2023-01-22)
 
 
