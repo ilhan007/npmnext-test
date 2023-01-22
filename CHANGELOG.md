@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.6.1](https://github.com/ilhan007/npmnext-sample/compare/v1.6.0...v1.6.1) (2023-01-22)
+
+
+### Bug Fixes
+
+* dadas ([9630dcd](https://github.com/ilhan007/npmnext-sample/commit/9630dcd543b05a6ae67059e11334379ff40aed93))
+* dadas ([eacbb99](https://github.com/ilhan007/npmnext-sample/commit/eacbb9936d7d5f53573303f57382c59c66c10eb1))
+* dadas ([fe0f9c6](https://github.com/ilhan007/npmnext-sample/commit/fe0f9c64c141795422df7b94256bc300aee4f9fa))
+* dadas ([9f617f1](https://github.com/ilhan007/npmnext-sample/commit/9f617f1d26b1dfda2c4e90a0da8bd7c411a6c342))
+
+
+
+
+
 # 1.6.0 (2023-01-22)
 
 
