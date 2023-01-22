@@ -51,5 +51,5 @@ jobs:
         git config user.name "${{ github.actor }}"
         git config user.email "${{ github.actor}}@users.noreply.github.com"
         git checkout main
-        yarn lerna version ${{ env.VERSION }} --conventional-commits --yes --create-release github 
+        yarn lerna version ${{ env.VERSION }} --conventional-commits --yes --force-git-tag --create-release github 
         yarn lerna publish from-git --yes
