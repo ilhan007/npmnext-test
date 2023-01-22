@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 1.5.5 (2023-01-22)
+
+
+### Bug Fixes
+
+* workflow ([d48b2e5](https://github.com/ilhan007/npmnext-sample/commit/d48b2e58706bf88574c1887100e4bead62a6b862))
+
+
+
+
+
 ## 1.5.2 (2023-01-22)
 
 
