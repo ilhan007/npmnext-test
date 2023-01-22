@@ -12,6 +12,7 @@ jobs:
     - uses: actions/checkout@v3
       with:
           token: ${{ secrets.GH_TOKEN }}
+          fetch-depth: 0
     - uses: actions/setup-node@v3
       with:
         node-version: 16
@@ -24,6 +25,7 @@ jobs:
 
     - name: Test
       run: echo ${{ env.VERSION }}
+
     - name: Install
       run: yarn
 
@@ -40,3 +42,16 @@ jobs:
       env:
         GH_TOKEN: ${{ secrets.GH_TOKEN }}
         NPM_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+    - name: Publish
+      env:
+        NPM_USERNAME: ${{ secrets.NPM_USERNAME }}
+        NPM_EMAIL: ${{ secrets.NPM_EMAIL }}
+        NPM_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        GH_TOKEN: ${{ secrets.GH_TOKEN }}
+      run: |
+        npm config set //registry.npmjs.org/:_authToken=${NPM_AUTH_TOKEN}
+        git config user.name "${{ github.actor }}"
+        git config user.email "${{ github.actor}}@users.noreply.github.com"
+        yarn lerna version ${{ env.VERSION }} --conventional-commits --yes --create-release github 
+        yarn lerna publish from-git --yes
