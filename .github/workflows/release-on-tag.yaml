@@ -33,10 +33,11 @@ jobs:
       run: yarn build
 
     - name: Get Branch
-       run: |
-         raw=$(git branch -r --contains ${{ github.ref }})
-         branch=${raw/origin\/}
-         echo ::set-env name=BRANCH::$branch
+      run: |
+        raw=$(git branch -r --contains ${{ github.ref }})
+        BRANCH=${raw/origin\/}
+        echo BRANCH: $BRANCH
+        echo "BRANCH=$BRANCH" >> $GITHUB_ENV
 
     - name: Publish
       env:
