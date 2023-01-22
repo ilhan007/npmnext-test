@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+
+**Note:** Version bump only for package @next-level/main
+
+
+
+
+
 ## [1.6.1](https://github.com/ilhan007/npmnext-sample/compare/v1.6.0...v1.6.1) (2023-01-22)
 
 **Note:** Version bump only for package @next-level/main
