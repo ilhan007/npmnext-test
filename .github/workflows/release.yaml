@@ -34,3 +34,6 @@ jobs:
         NPM_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       run: |
         node ./.github/actions/release.js --version=${{ github.event.inputs.version }} --tag=${{ github.event.inputs.tag }}
+        git config user.name "${{ github.actor }}"
+        git config user.email "${{ github.actor}}@users.noreply.github.com"
+        yarn lerna version ${{ github.event.inputs.version }} --conventional-commits --force-publish --yes --create-release github 
