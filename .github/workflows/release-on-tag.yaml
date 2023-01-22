@@ -33,17 +33,6 @@ jobs:
       run: yarn build
 
     - name: Publish
-      run: |
-        npm config set //registry.npmjs.org/:_authToken=${NPM_AUTH_TOKEN}
-        git config user.name "${{ github.actor }}"
-        git config user.email "${{ github.actor}}@users.noreply.github.com"
-        yarn lerna version ${{ env.VERSION }} --conventional-commits --yes --create-release github 
-        yarn lerna publish from-git --yes
-      env:
-        GH_TOKEN: ${{ secrets.GH_TOKEN }}
-        NPM_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-
-    - name: Publish
       env:
         NPM_USERNAME: ${{ secrets.NPM_USERNAME }}
         NPM_EMAIL: ${{ secrets.NPM_EMAIL }}
