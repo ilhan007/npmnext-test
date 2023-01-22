@@ -32,16 +32,12 @@ jobs:
     - name: Build
       run: yarn build
 
-    - name: Publish
+    - name: Get Branch
       run: |
-        npm config set //registry.npmjs.org/:_authToken=${NPM_AUTH_TOKEN}
-        git config user.name "${{ github.actor }}"
-        git config user.email "${{ github.actor}}@users.noreply.github.com"
-        yarn lerna version ${{ env.VERSION }} --conventional-commits --yes --create-release github 
-        yarn lerna publish from-git --yes
-      env:
-        GH_TOKEN: ${{ secrets.GH_TOKEN }}
-        NPM_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        raw=$(git branch -r --contains ${{ github.ref }})
+        BRANCH=${raw/origin\/}
+        echo BRANCH: $BRANCH
+        echo "BRANCH=$BRANCH" >> $GITHUB_ENV
 
     - name: Publish
       env:
@@ -50,8 +46,10 @@ jobs:
         NPM_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         GH_TOKEN: ${{ secrets.GH_TOKEN }}
       run: |
+        echo ${{ env.BRANCH }}
         npm config set //registry.npmjs.org/:_authToken=${NPM_AUTH_TOKEN}
         git config user.name "${{ github.actor }}"
         git config user.email "${{ github.actor}}@users.noreply.github.com"
+        git checkout ${{ env.BRANCH }}
         yarn lerna version ${{ env.VERSION }} --conventional-commits --yes --create-release github 
         yarn lerna publish from-git --yes

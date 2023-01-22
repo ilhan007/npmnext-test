@@ -7,14 +7,14 @@
 	"useWorkspaces": true,
 	"command": {
 		"version": {
-			"allowBranch": "main",
+			"allowBranch": "*",
 			"conventionalCommits": true,
 			"verifyAccess": false,
 			"yes": true,
 			"message": "chore(release): publish %s [ci skip]"
 		},
 		"publish": {
-			"allowBranch": "main",
+			"allowBranch": "*",
 			"conventionalCommits": true,
 			"yes": true,
 			"verifyAccess": false,

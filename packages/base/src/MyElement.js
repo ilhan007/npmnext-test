@@ -7,6 +7,9 @@ class MyElement extends HTMLElement {
 		shadow.appendChild(root);
 	}
 
+	render() {
+		return false;
+	}
 }
 
 export default MyElement;
