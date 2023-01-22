@@ -18,13 +18,12 @@ jobs:
         cache: 'yarn'
     - name: Set env
       run: |
-          echo "RELEASE_TAG=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
-          echo "RELEASE_VERSION=${RELEASE_TAG#v}" >> $GITHUB_ENV
+          VERSION=${GITHUB_REF_NAME#v}
+          echo Version: $VERSION
+          echo "VERSION=$VERSION" >> $GITHUB_ENV
 
     - name: Test
-      run: |
-          echo $RELEASE_TAG
-          echo ${{ env.RELEASE_VERSION }}
+      run: echo ${{ env.VERSION }}
     - name: Install
       run: yarn
 
@@ -36,7 +35,7 @@ jobs:
         npm config set //registry.npmjs.org/:_authToken=${NPM_AUTH_TOKEN}
         git config user.name "${{ github.actor }}"
         git config user.email "${{ github.actor}}@users.noreply.github.com"
-        yarn lerna version ${{ env.RELEASE_VERSION }} --conventional-commits --yes --create-release github 
+        yarn lerna version ${{ env.VERSION }} --conventional-commits --yes --create-release github 
         yarn lerna publish from-git --yes
       env:
         GH_TOKEN: ${{ secrets.GH_TOKEN }}
