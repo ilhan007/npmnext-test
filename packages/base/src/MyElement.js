@@ -11,7 +11,7 @@ class MyElement extends HTMLElement {
 		return true;
 	}
 
-	isBaseElement() {
+	get baseElement() {
 		return true;
 	}
 
