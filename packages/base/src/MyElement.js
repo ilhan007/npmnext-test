@@ -8,7 +8,7 @@ class MyElement extends HTMLElement {
 	}
 
 	render() {
-		return false;
+		return true;
 	}
 }
 
