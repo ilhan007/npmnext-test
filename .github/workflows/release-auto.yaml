@@ -1,14 +1,12 @@
-name: Release-on-push
+name: Release (automatic)
 
 on:
-  pull_request:
-    types: [closed]
-    branches:
-      - main
+  push:
+    branches: [main]
 
 jobs:
   build-and-release:
-    if: github.event.pull_request.merged == true
+    if: "contains(github.event.head_commit.message, 'chore: [release]')"
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3

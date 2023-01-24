@@ -3,13 +3,14 @@ name: Release
 on:
   workflow_dispatch:
     inputs:
-      version:
-        description: 'New version'     
+      release_type:
+        description: 'Release Type: patch | minor | major'     
         required: true
+        default: 'patch'
       tag:
-          description: 'Tag'     
-          required: true
-          default: latest
+        description: 'Tag'     
+        required: true
+        default: latest
 
 jobs:
   build-and-release:
