@@ -1,28 +1,13 @@
-const commitShaRegExp = /commit\/(?<sha>\w{40})/gm;
+import { readFileSync } from 'node:fs';
 
-module.exports = async function run({
-	github,
-	context,
-	version
-}) {
-	const {
-		data: release
-	} = await github.repos.getReleaseByTag({
-		owner: context.repo.owner,
-		repo: context.repo.repo,
-		tag: `v${version}`
-	});
-	release.url = release.html_url;
+export default async function run({ github, context }) {
+  const { version } = JSON.parse(readFileSync(new URL('../lerna.json', import.meta.url)).toString());
 
-	console.log(release);
-	// const commits = [];
-	// let result;
-	// do {
-	// 	result = commitShaRegExp.exec(release.body);
-	// 	if (result && result.groups && result.groups.sha) {
-	// 		commits.push({
-	// 			hash: result.groups.sha
-	// 		});
-	// 	}
-	// } while (result);
-};
+  const { data: release } = await github.request('GET /repos/{owner}/{repo}/releases/tags/{tag}', {
+    owner: context.repo.owner,
+    repo: context.repo.repo,
+    tag: `v${version}`
+  });
+
+  console.log(release);
+}
